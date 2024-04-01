@@ -39,6 +39,7 @@ namespace Control.Views
         {
             if (ValueChanged != null)
                 ValueChanged(AppId, (float)_slider.Value);
+            viewModel_UcVolumeApp.jsonOblectAudioSessionControl.Volume = (float)_slider.Value;
         }
 
         private void ViewModel_UcVolumeApp_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
