@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Control.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Control.Views.MainView"
+             x:DataType="vm:MainViewModel"
+			 
+			 Background="#1e1e1e"
+			 >
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="Margin" Value="2"/>
+		</Style>
+	</UserControl.Styles>
+  <Design.DataContext>
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<StackPanel Name="_stack">
+		
+		<Button Tag="button 1" Content="Test 1"/>
+		<Button Tag="button 2"  Content="Test 2"/>
+		 
+	</StackPanel>
+	
+</UserControl>
