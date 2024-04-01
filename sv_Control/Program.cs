@@ -22,8 +22,9 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
     switch (data)
     {
         case "getdevice":
-
-            threadUdpClient.Send(mMDeviceEnumeratorVolume.AudioSessionControlList.ToJsonObjectString());
+            string data_ = mMDeviceEnumeratorVolume.AudioSessionControlList.ToJsonObjectString();
+            Console.WriteLine(data_);
+            threadUdpClient.Send(data_);
             break;
         default:
 

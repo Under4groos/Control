@@ -16,7 +16,11 @@ namespace sv_Control.Module
         }
         public static string ToJsonObjectString(this List<AudioSessionControl> audioSessionControls)
         {
-            return JsonConvert.SerializeObject(audioSessionControls);
+
+
+            //audioSessionControls.Where( c => c.ToJsonObject() )
+            // ToJsonObject
+            return JsonConvert.SerializeObject((from control in audioSessionControls select control.ToJsonObject()).ToList());
         }
     }
 

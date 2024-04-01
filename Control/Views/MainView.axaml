@@ -6,8 +6,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Control.Views.MainView"
              x:DataType="vm:MainViewModel"
+			 Background="#1e1e1e"
 			 
-			 Background="Transparent"
 			 >
 	<UserControl.Styles>
 		<Style Selector="Button">
@@ -19,14 +19,15 @@
   <Design.DataContext>
     <vm:MainViewModel />
   </Design.DataContext>
-	<StackPanel Name="_stack">
-		
-		<Button Tag="getdevice" Content="Test 1"/>
-		<ListBox Name="_list">
+	<Grid>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="_stack">
+
+			<Button Tag="getdevice" Content="Refresh"/>
+		</StackPanel>
+		<ListBox Name="_list" Margin="0,40,0,0">
 			
 		</ListBox>
-		<Button Tag="button 2"  Content="Test 2"/>
-		 
-	</StackPanel>
-	
+	</Grid>
+
+
 </UserControl>
