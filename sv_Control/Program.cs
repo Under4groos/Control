@@ -18,7 +18,7 @@ mMDeviceEnumeratorVolume.Init();
 ThreadUdpClient threadUdpClient = new ThreadUdpClient();
 threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
 {
-    string[] dataarray = data.Trim().Split(',');
+    string[] dataarray = data.Trim().Split('|');
     if (dataarray.Length > 0)
         switch (dataarray[0])
         {
@@ -30,15 +30,15 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
             case "setvolume":
                 if (dataarray.Length == 3)
                 {
-                    float f = 0f;
-                    int id = 0;
-                    if (float.TryParse(dataarray[1], out f) && int.TryParse(dataarray[2], out id))
+                    float id = 0f;
+                    float volume = 0;
+                    if (float.TryParse(dataarray[1], out id) && float.TryParse(dataarray[2], out volume))
                     {
                         foreach (var item in mMDeviceEnumeratorVolume.AudioSessionControlList)
                         {
                             if (item.GetProcessID == id)
                             {
-                                item.SetVolume(f);
+                                item.SetVolume(volume);
                             }
                         }
                     }

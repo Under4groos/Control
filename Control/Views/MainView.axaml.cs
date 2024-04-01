@@ -87,18 +87,18 @@ public partial class MainView : UserControl
                 return;
             List<JsonOblectAudioSessionControl> jsonOblectAudioSessionControl = JsonConvert.DeserializeObject<List<JsonOblectAudioSessionControl>>(data__);
 
-            //_list.Items.Clear();
-            //foreach (JsonOblectAudioSessionControl item in jsonOblectAudioSessionControl)
-            //{
-            //    var v__ = new ucVolumeApp();
-            //    v__.viewModel_UcVolumeApp.jsonOblectAudioSessionControl = item;
-            //    v__.ValueChanged += (int id, float volume) =>
-            //    {
-            //        Client.SendString($"setvolume,{id},{volume}", new IPEndPoint(IPAddress.Broadcast, 8888));
-            //    };
+            _list.Items.Clear();
+            foreach (JsonOblectAudioSessionControl item in jsonOblectAudioSessionControl)
+            {
+                var v__ = new ucVolumeApp();
+                v__.viewModel_UcVolumeApp.jsonOblectAudioSessionControl = item;
+                v__.ValueChanged += (int id, float volume) =>
+                {
+                    Client.SendString($"setvolume|{id}|{volume}", new IPEndPoint(IPAddress.Broadcast, 8888));
+                };
 
-            //    _list.Items.Add(v__);
-            //}
+                _list.Items.Add(v__);
+            }
 
 
 
