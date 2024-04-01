@@ -47,6 +47,25 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
                     }
                 }
                 break;
+            case "setmute":
+                if (dataarray.Length == 3)
+                {
+                    float id = 0f;
+
+                    if (float.TryParse(dataarray[1], out id))
+                    {
+                        foreach (var item in mMDeviceEnumeratorVolume.AudioSessionControlList)
+                        {
+                            if (item.GetProcessID == id)
+                            {
+                                item.SetMute(dataarray[2].ToLower() == "true");
+
+                                Console.WriteLine($"SetMute: {item.ProcessName()}[{item.GetProcessID}]\n -> {item.GetVolume()}");
+                            }
+                        }
+                    }
+                }
+                break;
             default:
 
                 break;

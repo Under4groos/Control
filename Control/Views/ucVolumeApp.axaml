@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800"
              x:Class="Control.Views.ucVolumeApp"
+			   xmlns:skp="clr-namespace:Avalonia.Controls.Skia;assembly=Avalonia.Controls.Skia"
 			 xmlns:vm="using:Control.ViewModels"
 			 Background="Transparent"
 			 x:CompileBindings="True"
 			 x:DataType="vm:ViewModel_ucVolumeApp"
 			 >
- 
+	 
 	<StackPanel Margin="5">
 		<StackPanel Orientation="Horizontal">
 			<Label Name="_label" Content="NULL"
@@ -21,7 +22,12 @@
 			
 			<Label Name="_label2" Content="{Binding #_slider.Value , StringFormat=\{0:0.0\}}"
                HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
-			<Slider Padding="50,0,0,0" Name="_slider" Minimum="0" VerticalAlignment="Center"  Maximum="1"/>
+			<Slider Padding="50,0,75,0" Name="_slider" Minimum="0" VerticalAlignment="Center"  Maximum="1"/>
+			<Button Name="_button" HorizontalAlignment="Right" 
+					VerticalAlignment="Stretch"  Width="45" Height="45"
+					   >
+				 
+			</Button>
 		</Grid>
 	</StackPanel>
 </UserControl>

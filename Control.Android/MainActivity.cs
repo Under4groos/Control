@@ -8,7 +8,7 @@ using Avalonia.ReactiveUI;
 namespace Control.Android;
 
 [Activity(
-    Label = "Control.Android",
+    Label = "Control",
     Theme = "@style/MyTheme.NoActionBar",
     Icon = "@drawable/icon",
     MainLauncher = true,

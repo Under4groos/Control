@@ -20,7 +20,7 @@
     <vm:MainViewModel />
   </Design.DataContext>
 	<Grid>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="_stack">	
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Name="_stack">	
 			<Button Tag="getdevice" Content="Refresh"/>
 		</StackPanel>
 		<ListBox Name="_list" Margin="0,40,0,0" Padding="10,0,10,10">

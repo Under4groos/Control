@@ -17,6 +17,14 @@ namespace sv_Control.Module
         {
             return audioSessionControl.SimpleAudioVolume.Volume = volume;
         }
+        public static bool SetMute(this AudioSessionControl audioSessionControl, bool volume)
+        {
+            return audioSessionControl.SimpleAudioVolume.Mute = volume;
+        }
+        public static string GetMute(this AudioSessionControl audioSessionControl)
+        {
+            return audioSessionControl.SimpleAudioVolume.Mute.ToString().ToLower();
+        }
         public static JsonOblectAudioSessionControl ToJsonObject(this AudioSessionControl audioSessionControl)
         {
             return new JsonOblectAudioSessionControl().Set(audioSessionControl);
@@ -39,11 +47,17 @@ namespace sv_Control.Module
             get; set;
         } = 0;
 
+        public string IsMute
+        {
+            get; set;
+        } = string.Empty;
+
         public JsonOblectAudioSessionControl Set(AudioSessionControl audioSessionControl)
         {
             Volume = audioSessionControl.GetVolume();
             ProcessName = audioSessionControl.ProcessName();
             ProcessID = (int)audioSessionControl.GetProcessID;
+            IsMute = audioSessionControl.GetMute();
             return this;
         }
         public override string ToString()

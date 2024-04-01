@@ -96,7 +96,10 @@ public partial class MainView : UserControl
                 {
                     Client.SendString($"setvolume|{id}|{volume}", new IPEndPoint(IPAddress.Broadcast, 8888));
                 };
-
+                v__.EvButtonClick += (int id, string bool_) =>
+                {
+                    Client.SendString($"setmute|{id}|{bool_}", new IPEndPoint(IPAddress.Broadcast, 8888));
+                };
                 _list.Items.Add(v__);
             }
 

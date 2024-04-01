@@ -16,7 +16,10 @@
         {
             get; set;
         } = 0;
-
+        public string IsMute
+        {
+            get; set;
+        } = string.Empty;
 
         public override string ToString()
         {
