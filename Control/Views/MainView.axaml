@@ -7,7 +7,7 @@
              x:Class="Control.Views.MainView"
              x:DataType="vm:MainViewModel"
 			 
-			 Background="#1e1e1e"
+			 Background="Transparent"
 			 >
 	<UserControl.Styles>
 		<Style Selector="Button">
@@ -21,7 +21,10 @@
   </Design.DataContext>
 	<StackPanel Name="_stack">
 		
-		<Button Tag="button 1" Content="Test 1"/>
+		<Button Tag="getdevice" Content="Test 1"/>
+		<ListBox Name="_list">
+			
+		</ListBox>
 		<Button Tag="button 2"  Content="Test 2"/>
 		 
 	</StackPanel>
