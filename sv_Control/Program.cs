@@ -23,6 +23,7 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
         switch (dataarray[0])
         {
             case "getdevice":
+                mMDeviceEnumeratorVolume.Init();
                 string data_ = mMDeviceEnumeratorVolume.AudioSessionControlList.ToJsonObjectString();
                 Console.WriteLine(data_);
                 threadUdpClient.Send(data_);
@@ -39,6 +40,8 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
                             if (item.GetProcessID == id)
                             {
                                 item.SetVolume(volume);
+
+                                Console.WriteLine($"SetVolume: {item.ProcessName()}[{item.GetProcessID}]\n -> {item.GetVolume()}");
                             }
                         }
                     }
@@ -50,7 +53,7 @@ threadUdpClient.EvRequestData += (IPAddress adress, string data) =>
         }
 
 
-    Console.WriteLine($"IP:{adress.Address.ToString()}\n  -> {data}");
+
 
 };
 threadUdpClient.ToListen();

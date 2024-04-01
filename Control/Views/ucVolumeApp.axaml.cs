@@ -28,6 +28,8 @@ namespace Control.Views
         {
             _label.Content = viewModel_UcVolumeApp.jsonOblectAudioSessionControl.ProcessName;
             _slider.Value = viewModel_UcVolumeApp.jsonOblectAudioSessionControl.Volume;
+            _label_id.Content = $"({viewModel_UcVolumeApp.jsonOblectAudioSessionControl.ProcessID})";
+
         }
     }
 }

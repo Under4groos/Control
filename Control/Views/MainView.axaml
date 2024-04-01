@@ -20,12 +20,16 @@
     <vm:MainViewModel />
   </Design.DataContext>
 	<Grid>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="_stack">
-
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Name="_stack">	
 			<Button Tag="getdevice" Content="Refresh"/>
 		</StackPanel>
-		<ListBox Name="_list" Margin="0,40,0,0">
-			
+		<ListBox Name="_list" Margin="0,40,0,0" Padding="10,0,10,10">
+			<ListBox.Styles>
+				<Style Selector="ListBoxItem">
+					<Setter Property="Padding" Value="0,2,0,2"/>
+					<Setter Property="Margin" Value="0"/>
+				</Style>
+			</ListBox.Styles>
 		</ListBox>
 	</Grid>
 

@@ -11,8 +11,12 @@
 			 >
  
 	<StackPanel Margin="5">
- 		<Label Name="_label" Content="NULL"
+		<StackPanel Orientation="Horizontal">
+			<Label Name="_label" Content="NULL"
               HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+			<Label Name="_label_id" Content="NULL"
+              HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+		</StackPanel>
 		<Grid HorizontalAlignment="Stretch">
 			
 			<Label Name="_label2" Content="{Binding #_slider.Value , StringFormat=\{0:0.0\}}"
