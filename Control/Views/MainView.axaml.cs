@@ -13,14 +13,26 @@ public static class s_UdpClient
 {
     public static void SendString(this UdpClient udp, string data, IPEndPoint? endPoint)
     {
-        var RequestData = Encoding.ASCII.GetBytes(data);
+        var RequestData = Encoding.UTF8.GetBytes(data);
         udp.Send(RequestData, RequestData.Length, endPoint);
 
     }
-    public static string ReadString(this UdpClient udp)
+    public static string? ReadString(this UdpClient udp)
     {
-        var ServerEp = new IPEndPoint(IPAddress.Any, 0);
-        return Encoding.ASCII.GetString(udp.Receive(ref ServerEp));
+        byte[] daata__ = { };
+        try
+        {
+            var ServerEp = new IPEndPoint(IPAddress.Any, 0);
+
+            daata__ = udp.Receive(ref ServerEp);
+
+        }
+        catch (System.Exception e)
+        {
+            Debug.WriteLine(e.Message);
+            return null;
+        }
+        return Encoding.UTF8.GetString(daata__);
 
     }
 }
@@ -61,21 +73,32 @@ public partial class MainView : UserControl
 
 
 
-
             Client.SendString(tag_, new IPEndPoint(IPAddress.Broadcast, 8888));
 
-            List<JsonOblectAudioSessionControl> jsonOblectAudioSessionControl = JsonConvert.DeserializeObject<List<JsonOblectAudioSessionControl>>(Client.ReadString());
+            //string? data__ = Client.ReadString();
 
-            _list.Items.Clear();
-            foreach (JsonOblectAudioSessionControl item in jsonOblectAudioSessionControl)
-            {
-                var v__ = new ucVolumeApp();
-                v__.viewModel_UcVolumeApp.jsonOblectAudioSessionControl = item;
-                //v__.viewModel_UcVolumeApp.Volume = item.Volume;
-                //v__.viewModel_UcVolumeApp.ProcessName = item.ProcessName;
 
-                _list.Items.Add(v__);
-            }
+            var ServerEp = new IPEndPoint(IPAddress.Any, 0);
+
+            byte[] daata__ = Client.Receive(ref ServerEp);
+            string data__ = Encoding.UTF8.GetString(daata__);
+
+            if (data__ == null)
+                return;
+            List<JsonOblectAudioSessionControl> jsonOblectAudioSessionControl = JsonConvert.DeserializeObject<List<JsonOblectAudioSessionControl>>(data__);
+
+            //_list.Items.Clear();
+            //foreach (JsonOblectAudioSessionControl item in jsonOblectAudioSessionControl)
+            //{
+            //    var v__ = new ucVolumeApp();
+            //    v__.viewModel_UcVolumeApp.jsonOblectAudioSessionControl = item;
+            //    v__.ValueChanged += (int id, float volume) =>
+            //    {
+            //        Client.SendString($"setvolume,{id},{volume}", new IPEndPoint(IPAddress.Broadcast, 8888));
+            //    };
+
+            //    _list.Items.Add(v__);
+            //}
 
 
 

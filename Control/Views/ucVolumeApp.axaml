@@ -11,10 +11,13 @@
 			 >
  
 	<StackPanel Margin="5">
- 		<Label Name="_label" Content=" "
+ 		<Label Name="_label" Content="NULL"
               HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
-		<Label Name="_label2" Content=" "
-              HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
-		<Slider Name="_slider" Minimum="0"  Maximum="1"/>
+		<Grid HorizontalAlignment="Stretch">
+			
+			<Label Name="_label2" Content="{Binding #_slider.Value , StringFormat=\{0:0.0\}}"
+               HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
+			<Slider Padding="50,0,0,0" Name="_slider" Minimum="0" VerticalAlignment="Center"  Maximum="1"/>
+		</Grid>
 	</StackPanel>
 </UserControl>
