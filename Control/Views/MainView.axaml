@@ -21,7 +21,7 @@
   </Design.DataContext>
 	<Grid>
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Name="_stack">	
-			<Button Tag="getdevice" Content="Refresh"/>
+			<Button Tag="getdevice" Content="Refddddddddresh"/>
 		</StackPanel>
 		<ListBox Name="_list" Margin="0,40,0,0" Padding="10,0,10,10">
 			<ListBox.Styles>
