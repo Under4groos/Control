@@ -4,14 +4,14 @@ using Avalonia.Markup.Xaml;
 
 using Control.ViewModels;
 using Control.Views;
-using HotAvalonia;
+
 namespace Control;
 
 public partial class App : Application
 {
     public override void Initialize()
     {
-        this.EnableHotReload();
+
         AvaloniaXamlLoader.Load(this);
     }
 
