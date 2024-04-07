@@ -1,10 +1,6 @@
 # Control  -> Avalonia (11.0.10) + net7
-
-<div align="left">
-    
-    <h3 style="margin-top: 10px;"> Build in Visual Studio</h3>
-
-</div>
+Build in Visual Studio
+ 
 <div align="left">
     <h3 style="margin-top: 40px;"> Приложение позволяющее управлять громкостью приложений на ПК.</h3>
     <h4 style="margin-top: 10px;"> Android </h4>
