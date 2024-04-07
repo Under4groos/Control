@@ -13,7 +13,7 @@ public static class s_UdpClient
 {
     public static void SendString(this UdpClient udp, string data, IPEndPoint? endPoint)
     {
-        var RequestData = Encoding.UTF8.GetBytes(data);
+        byte[] RequestData = Encoding.UTF8.GetBytes(data);
         udp.Send(RequestData, RequestData.Length, endPoint);
 
     }
@@ -22,9 +22,9 @@ public static class s_UdpClient
         byte[] daata__ = { };
         try
         {
-            var ServerEp = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint ServerEp = new IPEndPoint(IPAddress.Any, 0);
 
-            daata__ = udp.Receive(ref ServerEp);
+            daata__ = udp.ReceiveAsync().Result.Buffer;
 
         }
         catch (System.Exception e)
@@ -53,12 +53,8 @@ public partial class MainView : UserControl
     private void MainView_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
 
-        foreach (Button item in _stack.Children)
-        {
 
-            item.Click += _button_Click;
-        }
-
+        _button_refresh.Click += _button_Click;
     }
 
     private void _button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -78,19 +74,19 @@ public partial class MainView : UserControl
             //string? data__ = Client.ReadString();
 
 
-            var ServerEp = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint ServerEp = new IPEndPoint(IPAddress.Any, 0);
 
-            byte[] daata__ = Client.Receive(ref ServerEp);
-            string data__ = Encoding.UTF8.GetString(daata__);
+
+            string data__ = Client.ReadString();
 
             if (data__ == null)
                 return;
             List<JsonOblectAudioSessionControl> jsonOblectAudioSessionControl = JsonConvert.DeserializeObject<List<JsonOblectAudioSessionControl>>(data__);
 
-            _list.Items.Clear();
+            _list.Children.Clear();
             foreach (JsonOblectAudioSessionControl item in jsonOblectAudioSessionControl)
             {
-                var v__ = new ucVolumeApp();
+                ucVolumeApp v__ = new ucVolumeApp();
                 v__.viewModel_UcVolumeApp.jsonOblectAudioSessionControl = item;
                 v__.ValueChanged += (int id, float volume) =>
                 {
@@ -100,7 +96,7 @@ public partial class MainView : UserControl
                 {
                     Client.SendString($"setmute|{id}|{bool_}", new IPEndPoint(IPAddress.Broadcast, 8888));
                 };
-                _list.Items.Add(v__);
+                _list.Children.Add(v__);
             }
 
 

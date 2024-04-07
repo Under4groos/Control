@@ -2,32 +2,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800"
+             mc:Ignorable="d" d:DesignWidth="1200"
              x:Class="Control.Views.ucVolumeApp"
 			   xmlns:skp="clr-namespace:Avalonia.Controls.Skia;assembly=Avalonia.Controls.Skia"
 			 xmlns:vm="using:Control.ViewModels"
-			 Background="Transparent"
+			 
 			 x:CompileBindings="True"
 			 x:DataType="vm:ViewModel_ucVolumeApp"
+			 Background="Transparent"
 			 >
-	 
-	<StackPanel Margin="5">
-		<StackPanel Orientation="Horizontal">
-			<Label Name="_label" Content="NULL"
-              HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
-			<Label Name="_label_id" Content="NULL"
-              HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
-		</StackPanel>
-		<Grid HorizontalAlignment="Stretch">
+	<UserControl.Styles>
+		<Style Selector="Label">
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="Margin" Value="2"/>
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="Foreground" Value="#ffff"/>
+		</Style>
+	</UserControl.Styles>
+	<Border Background="#2e2e2e" CornerRadius="8" BorderThickness="1" BorderBrush="#3d3d3d">
+		<StackPanel Margin="5">
+			<Border Background="#4d4d4d" 
+					 CornerRadius="8" BorderThickness="1" BorderBrush="#3d3d3d"
+					Padding="5">
+				<StackPanel Orientation="Horizontal">
+					<Label Name="_label" Content="NULL"
+					  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+					<Label Name="_label_id" Content="NULL"
+					  HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"/>
+				</StackPanel>
+			</Border>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="100"></ColumnDefinition>
+					<ColumnDefinition Width="1*"></ColumnDefinition>
+					<ColumnDefinition Width="50" MaxWidth="50"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid  Grid.Column="0" >
+					<Border Background="#4d4d4d" HorizontalAlignment="Stretch"
+					 CornerRadius="8" BorderThickness="1" BorderBrush="#3d3d3d"
+					Padding="10,2,10,2" VerticalAlignment="Center"
+					Width="100"
+						>
+						<Label Name="_label2" Content="{Binding #_slider.Value , StringFormat=\{0:0.0 %\}}"
+					   HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+				</Grid>
+				<Grid Grid.Column="1" HorizontalAlignment="Stretch">
+					<Slider Margin="10,0,10,0" Background="#259ad4"  Name="_slider" Minimum="0"    Maximum="1"/>
+
+				</Grid>
+				<Grid Grid.Column="3">
+					<Button Name="_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+				</Grid>
+			</Grid>
 			
-			<Label Name="_label2" Content="{Binding #_slider.Value , StringFormat=\{0:0.0\}}"
-               HorizontalContentAlignment="Left" VerticalAlignment="Center"/>
-			<Slider Padding="50,0,75,0" Name="_slider" Minimum="0" VerticalAlignment="Center"  Maximum="1"/>
-			<Button Name="_button" HorizontalAlignment="Right" 
-					VerticalAlignment="Stretch"  Width="45" Height="45"
-					   >
-				 
-			</Button>
-		</Grid>
-	</StackPanel>
+			
+			 
+		</StackPanel>
+	</Border>
+
 </UserControl>
