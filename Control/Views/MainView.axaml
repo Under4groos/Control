@@ -6,8 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Control.Views.MainView"
              x:DataType="vm:MainViewModel"
-			  
-			 
+			 Background="Transparent"
 			 >
 	<UserControl.Styles>
 		<Style Selector="Button">
@@ -21,13 +20,14 @@
   </Design.DataContext>
 	<Grid>
 	 
-		<Button Name="_button_refresh"  Tag="getdevice" Content="Refresh" HorizontalAlignment="Stretch" VerticalAlignment="Top" Foreground="White" Background="#4d4d4d"/>
 
-		<ScrollViewer Margin="0,40,0,0">
-			<StackPanel Name="_list" Background="Transparent">
+		<ScrollViewer Margin="0,5,0,40" >
+			<StackPanel Name="_list" Margin="5,0,5,0" Background="Transparent">
 				 
 			</StackPanel>
 		</ScrollViewer>
+		<Button Name="_button_refresh" CornerRadius="8"  Tag="getdevice" Content="Refresh" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Foreground="White" Background="#4d4d4d"/>
+
 	</Grid>
 
 

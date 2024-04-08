@@ -7,9 +7,10 @@ namespace Control.Views
 {
     public partial class ucVolumeApp : UserControl
     {
+
         public ViewModel_ucVolumeApp viewModel_UcVolumeApp = new ViewModel_ucVolumeApp();
-        public Action<int, float> ValueChanged;
-        public Action<int, string> EvButtonClick;
+        public Action<ViewModel_ucVolumeApp> ValueChanged;
+
         private int AppId
         {
             get
@@ -30,16 +31,18 @@ namespace Control.Views
         private void _button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             viewModel_UcVolumeApp.jsonOblectAudioSessionControl.IsMute = viewModel_UcVolumeApp.jsonOblectAudioSessionControl.IsMute == "true" ? "false" : "true";
-            if (EvButtonClick != null)
-                EvButtonClick(AppId, viewModel_UcVolumeApp.jsonOblectAudioSessionControl.IsMute);
+            if (ValueChanged != null)
+                ValueChanged(viewModel_UcVolumeApp);
             ViewModel_UcVolumeApp_PropertyChanged(null, null);
         }
 
         private void _slider_ValueChanged(object? sender, Avalonia.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
-            if (ValueChanged != null)
-                ValueChanged(AppId, (float)_slider.Value);
+
             viewModel_UcVolumeApp.jsonOblectAudioSessionControl.Volume = (float)_slider.Value;
+            if (ValueChanged != null)
+                ValueChanged(viewModel_UcVolumeApp);
+
         }
 
         private void ViewModel_UcVolumeApp_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)

@@ -8,7 +8,9 @@
         x:Class="Control.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Control"
-		Background="#1e1e1e"
+		 
+		 
 		>
-        <views:MainView />
+	<views:MainView />
+       
 </Window>
